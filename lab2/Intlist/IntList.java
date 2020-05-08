@@ -87,6 +87,7 @@ public class IntList {
         }
         if ((A==null)&&(B!=null)) {
             A = B;
+            return A;
         }
         IntList p=A;
         while(p!=null) {
@@ -111,6 +112,7 @@ public class IntList {
         }
         if ((A==null)&&(B!=null)) {
             A = B;
+            return A;
         }
         IntList p= new IntList(A.first,null);
         IntList temp = p;
