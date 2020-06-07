@@ -7,7 +7,7 @@ public class TestOffByOne {
     // You must use this CharacterComparator and not instantiate
     // new ones, or the autograder might be upset.
     @Test
-    public void TestOffByOne() {
+    public void testoffbyone() {
         assertTrue(offByOne.equalChars('a', 'b'));
         assertTrue(offByOne.equalChars('r', 'q'));
         assertTrue(offByOne.equalChars('&', '%'));

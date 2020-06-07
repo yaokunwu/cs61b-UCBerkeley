@@ -18,17 +18,17 @@ public class TestPalindrome {
 
     @Test
     public void testispalindrome() {
-        assertTrue(Palindrome.isPalindrome("a"));
-        assertTrue(Palindrome.isPalindrome("racecar"));
-        assertTrue(Palindrome.isPalindrome("noon"));
-        assertFalse(Palindrome.isPalindrome("horse"));
-        assertFalse(Palindrome.isPalindrome("rancor"));
-        assertTrue(Palindrome.isPalindrome("aa"));
-        assertTrue(Palindrome.isPalindrome("aba"));
-        assertTrue(Palindrome.isPalindrome("abba"));
-        assertFalse(Palindrome.isPalindrome("ab"));
-        assertFalse(Palindrome.isPalindrome("abc"));
-        assertFalse(Palindrome.isPalindrome("abc"));
+        assertTrue(palindrome.isPalindrome("a"));
+        assertTrue(palindrome.isPalindrome("racecar"));
+        assertTrue(palindrome.isPalindrome("noon"));
+        assertFalse(palindrome.isPalindrome("horse"));
+        assertFalse(palindrome.isPalindrome("rancor"));
+        assertTrue(palindrome.isPalindrome("aa"));
+        assertTrue(palindrome.isPalindrome("aba"));
+        assertTrue(palindrome.isPalindrome("abba"));
+        assertFalse(palindrome.isPalindrome("ab"));
+        assertFalse(palindrome.isPalindrome("abc"));
+        assertFalse(palindrome.isPalindrome("abc"));
     }
     //Uncomment this class once you've created your Palindrome class.
 }
