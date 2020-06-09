@@ -11,10 +11,10 @@ public class GuitarHeroLite {
 //        synthesizer.GuitarString stringC = new synthesizer.GuitarString(CONCERT_C);
 
         String keyboard = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
-        synthesizer.GuitarString stringall[] = new synthesizer.GuitarString[37];
+        synthesizer.GuitarString[] stringAll = new synthesizer.GuitarString[37];
         for (int i = 0; i < keyboard.length(); i += 1) {
-            double frequency = 440.0 * Math.pow(2.0,(i - 24.0)/12.0);
-            stringall[i] = new synthesizer.GuitarString(frequency);
+            double frequency = 440.0 * Math.pow(2.0, (i - 24.0) / 12.0);
+            stringAll[i] = new synthesizer.GuitarString(frequency);
         }
 
 
@@ -22,15 +22,15 @@ public class GuitarHeroLite {
             if (StdDraw.hasNextKeyTyped()) {
                 char key = StdDraw.nextKeyTyped();
                 int ind = keyboard.indexOf(key);
-                if (ind == -1){
+                if (ind == -1) {
                     continue;
                 }
-                stringall[ind].pluck();
+                stringAll[ind].pluck();
             }
 
             /* compute the superposition of samples */
             double sample = 0.0;
-            for (GuitarString item : stringall) {
+            for (GuitarString item : stringAll) {
                 sample += item.sample();
             }
 //            double sample = stringA.sample() + stringC.sample();
@@ -39,7 +39,7 @@ public class GuitarHeroLite {
             StdAudio.play(sample);
 
             /* advance the simulation of each guitar string by one step */
-            for (GuitarString item : stringall) {
+            for (GuitarString item : stringAll) {
                 item.tic();
             }
 //            stringA.tic();
