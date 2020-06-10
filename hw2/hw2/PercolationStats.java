@@ -14,7 +14,7 @@ public class PercolationStats {
             int col = StdRandom.uniform(N);
             single.open(row, col);
         }
-        return single.opensize / (double) (N * N);
+        return (double) single.numberOfOpenSites() / (N * N);
     }
     public PercolationStats(int N, int T, PercolationFactory pf) {
         if (N <= 0 | T <= 0) {
@@ -22,12 +22,10 @@ public class PercolationStats {
         }
 
         this.T = T;
-        double[] curr = new double[T];
+        thre = new double[T];
         for (int i = 0; i < T; i += 1) {
-            double result = singleExp(N, pf);
-            curr[i] = result;
+            thre[i] = singleExp(N, pf);
         }
-        this.thre = curr;
     }   // perform T independent experiments on an N-by-N grid
     public double mean() {
         return StdStats.mean(thre);
@@ -46,14 +44,18 @@ public class PercolationStats {
         return aver + 1.96 * sigm / Math.sqrt(T);
     } // high endpoint of 95% confidence interval
 
-    public static void main(String[] args) {
-        int N = Integer.parseInt(args[0]);
-        int T = Integer.parseInt(args[1]);
-        PercolationFactory pf = new PercolationFactory();
-        PercolationStats simu = new PercolationStats(N, T, pf);
-        System.out.println("mean = " + simu.mean());
-        System.out.println("stddev = " + simu.stddev());
-        System.out.println("95% confidence interval = " + "[" + simu.confidenceLow() + " , "
-                + simu.confidenceHigh() + "]");
-    }
+//    public static void main(String[] args) {
+//        int N = Integer.parseInt(args[0]);
+//        int T = Integer.parseInt(args[1]);
+//        PercolationFactory pf = new PercolationFactory();
+//        PercolationStats simu = new PercolationStats(N, T, pf);
+//        System.out.println("mean = " + simu.mean());
+//        PercolationStats simu2 = new PercolationStats(10, 20, pf);
+//        System.out.println("mean2 = " + simu2.mean());
+//        System.out.println("mean1 = " + simu.mean());
+//        System.out.println("mean = " + simu.mean());
+//        System.out.println("stddev = " + simu.stddev());
+//        System.out.println("95% confidence interval = " + "[" + simu.confidenceLow() + " , "
+//                + simu.confidenceHigh() + "]");
+//    }
 }

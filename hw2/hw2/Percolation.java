@@ -9,17 +9,21 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
  **************************************************************************** */
 
 public class Percolation {
-    int opensize;
-    int[][] grids;
-    int[][] uf_2D;
-    WeightedQuickUnionUF uf;
-    WeightedQuickUnionUF uf2;
-    int vtInd;
-    int vbInd;
-    int n;
+    private int opensize;
+    private int[][] grids;
+    private int[][] uf_2D;
+    private WeightedQuickUnionUF uf;
+    private WeightedQuickUnionUF uf2;
+    private int vtInd;
+    private int vbInd;
+    private int n;
 
     // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("invalid input!");
+        }
+
         this.n = n;
         grids = new int[n][n];
         uf_2D = new int[n][n];
@@ -31,13 +35,13 @@ public class Percolation {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 uf_2D[i][j] = i * n + j;
-                if (i == 0) {
-                    uf.union(uf_2D[i][j], vtInd);
-                    uf2.union(uf_2D[i][j], vtInd);
-                }
-                if (i == n - 1) {
-                    uf.union(uf_2D[i][j], vbInd);
-                }
+//                if (i == 0) {
+//                    uf.union(uf_2D[i][j], vtInd);
+//                    uf2.union(uf_2D[i][j], vtInd);
+//                }
+//                if (i == n - 1) {
+//                    uf.union(uf_2D[i][j], vbInd);
+//                }
             }
         }
     }
@@ -66,12 +70,19 @@ public class Percolation {
             grids[row][col] = 1;
             opensize += 1;
             connectaround(row, col);
+            if (row == 0) {
+                uf.union(uf_2D[row][col], vtInd);
+                uf2.union(uf_2D[row][col], vtInd);
+            }
+            if (row == n - 1) {
+                uf.union(uf_2D[row][col], vbInd);
+            }
         }
 
-        if (!isOpen(row, col)) {
-            grids[row][col] = 1;
-            opensize += 1;
-        }
+//        if (!isOpen(row, col)) {
+//            grids[row][col] = 1;
+//            opensize += 1;
+//        }
     }
 
     // is the site (row, col) open?
