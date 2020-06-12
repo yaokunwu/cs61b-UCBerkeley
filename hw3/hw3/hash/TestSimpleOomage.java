@@ -32,9 +32,9 @@ public class TestSimpleOomage {
         SimpleOomage test;
         Set<Integer> all = new HashSet<>();
         int num = 0;
-        for (int i = 0; i < 255 / 5; i++) {
-            for (int j = 0; j < 255 / 5; j++) {
-                for (int k = 0; k < 255 / 5; k++) {
+        for (int i = 0; i <= 255 / 5; i++) {
+            for (int j = 0; j <= 255 / 5; j++) {
+                for (int k = 0; k <= 255 / 5; k++) {
                     test = new SimpleOomage(i * 5, j * 5, k * 5);
                     all.add(test.hashCode());
                     num += 1;
